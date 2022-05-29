@@ -17,7 +17,7 @@ data class CoinList(
 
 //"id":"01coin","symbol":"zoc","name":"01coin"
 data class CoinMeta(
-    @field:Json(name = "id") val id: String,
+    @field:Json(name = "id") var id: String,
     @field:Json(name = "symbol") val symbol: String,
     @field:Json(name = "name") val name: String,
 )
@@ -28,7 +28,7 @@ data class SupportedCoins(
 
 interface CoinGeckoAPI {
     @GET("coins/list")
-    fun getCoinsList(): Call<CoinList>
+    fun getCoinsList(): Call<List<CoinMeta>>
     @GET("simple/supported_vs_currencies")
-    fun getSupportCurrencies(): Call<SupportedCoins>
+    fun getSupportCurrencies(): Call<List<String>>
 }

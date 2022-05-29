@@ -1,5 +1,5 @@
 package com.example.coinview
 
-data class ItemsViewModel(val image: Int, val text: String){
+data class ItemsViewModel(var image: Int = 0, var text: String){
 
 }

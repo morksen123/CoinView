@@ -10,16 +10,17 @@ import retrofit2.converter.moshi.MoshiConverterFactory
  */
 object NetworkModule {
     // Create and config an instance of retrofit
-    private val retrofit = Retrofit.Builder()
-        .baseUrl("https://worldtimeapi.org/")
-        .addConverterFactory(MoshiConverterFactory.create())
-        .build()
-
     private val cg_retro = Retrofit.Builder()
         .baseUrl("https://api.coingecko.com/api/v3/")
+        .addConverterFactory(MoshiConverterFactory.create()) //KotlinJsonAdapterFactory
+        .build()
+
+    private val c_img_retro = Retrofit.Builder()
+        .baseUrl("https://cryptoicons.org/api/icon/")
         .addConverterFactory(MoshiConverterFactory.create())
         .build()
 
     // Create our API
     val coinGeckoAPI: CoinGeckoAPI = cg_retro.create(CoinGeckoAPI::class.java)
+    val cryptoImgAPI: CryptoImgAPI = c_img_retro.create(CryptoImgAPI::class.java)
 }
