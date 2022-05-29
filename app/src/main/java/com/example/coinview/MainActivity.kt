@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         getAllCoinData()
         recyclerview.adapter = CustomAdapter(coinListView)
+
     }
 
     private fun initCoinSymbols(){
