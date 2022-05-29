@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         val coinArray = ArrayList<ItemsViewModel>()
 
-        // bitcoin, eth, dopecoin, bitcoin2x, blocknet, candy, chess, coupe, dascoin, educare
+        // adding coins to list
         data.add(ItemsViewModel(R.drawable.bitcoin2x, text = "Bitcoin2x"))
         data.add(ItemsViewModel(R.drawable.blocknet, text = "blocknet"))
         data.add(ItemsViewModel(R.drawable.candy, text = "candy"))
@@ -47,6 +47,21 @@ class MainActivity : AppCompatActivity() {
         data.add(ItemsViewModel(R.drawable.apis, text = "apis"))
         data.add(ItemsViewModel(R.drawable.aidoc, text = "aidoc"))
         data.add(ItemsViewModel(R.drawable.ardor, text = "ardor"))
+        data.add(ItemsViewModel(R.drawable.envion, text = "envion"))
+        data.add(ItemsViewModel(R.drawable.eos, text = "eos"))
+        data.add(ItemsViewModel(R.drawable.equal, text = "equal"))
+        data.add(ItemsViewModel(R.drawable.equitrader, text = "equitrader"))
+        data.add(ItemsViewModel(R.drawable.ethereum, text = "ethereum"))
+        data.add(ItemsViewModel(R.drawable.ethereumcash, text = "ethereumcash"))
+        data.add(ItemsViewModel(R.drawable.etheriya, text = "etheriya"))
+        data.add(ItemsViewModel(R.drawable.etheroll, text = "etherroll"))
+        data.add(ItemsViewModel(R.drawable.etherparty, text = "etherparty"))
+        data.add(ItemsViewModel(R.drawable.ethgas, text = "ethgas"))
+        data.add(ItemsViewModel(R.drawable.ethlend, text = "ethland"))
+        data.add(ItemsViewModel(R.drawable.fastcoin, text = "fastcoin"))
+        data.add(ItemsViewModel(R.drawable.fidentiax, text = "fidentiax"))
+        data.add(ItemsViewModel(R.drawable.filecoin, text = "filecoin"))
+        data.add(ItemsViewModel(R.drawable.goldblocks, text = "goldblocks"))
 
         val adapter = CustomAdapter(data)
 
