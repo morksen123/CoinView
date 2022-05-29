@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.coinview.models.internalCoinData
 import com.example.coinview.network.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
@@ -16,24 +17,21 @@ import kotlin.collections.ArrayList
 class MainActivity : AppCompatActivity() {
     private val MYNAME = "MainActivity"
     private val maxNumCoins = 30
-    private val coinIds = ArrayList<String>()
+    private val coinIds = ArrayList<internalCoinData>()
     private val coinGeckoAPI: CoinGeckoAPI = NetworkModule.coinGeckoAPI
     private val cryptoImgAPI: CryptoImgAPI = NetworkModule.cryptoImgAPI
     private val fab: FloatingActionButton by lazy { findViewById(R.id.fab) }
+    private val recyclerview by lazy { findViewById<RecyclerView>(R.id.coinList) }
     private var coinList: ArrayList<CoinMeta> = ArrayList<CoinMeta>()
     private val coinListView: ArrayList<ItemsViewModel> = ArrayList<ItemsViewModel>(maxNumCoins)
 
     private var supportedCoins: ArrayList<String> = ArrayList<String>()
-
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         initCoinSymbols()
-
-        val recyclerview = findViewById<RecyclerView>(R.id.coinList)
-
         recyclerview.layoutManager = LinearLayoutManager(this)
         fab.setOnClickListener { getAllCoinData() }
 
@@ -43,19 +41,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initCoinSymbols(){
-        coinIds.add("bitcoin")
-        coinIds.add("ethereum")
-        coinIds.add("eth2-staking-by-poolx")
-        coinIds.add("tether")
-        coinIds.add("usd-coin")
-        coinIds.add("binancecoin")
-        coinIds.add("ripple")
-        coinIds.add("cardano")
-        coinIds.add("solana")
-        coinIds.add("dogecoin")
-        coinIds.add("polkadot")
-        coinIds.add("wrapped-bitcoin")
-
+        coinIds.add(internalCoinData("bitcoin", "Bitcoin"))
+        coinIds.add(internalCoinData("ethereum", "Ethereum"))
+        coinIds.add(internalCoinData("eth2-staking-by-poolx", "Ethereum 2"))
+        coinIds.add(internalCoinData("tether", "Tether"))
+        coinIds.add(internalCoinData("usd-coin", "USD Coin"))
+        coinIds.add(internalCoinData("binancecoin", "BNB"))
+        coinIds.add(internalCoinData("ripple", "XRP"))
+        coinIds.add(internalCoinData("cardano", "Cardano"))
+        coinIds.add(internalCoinData("solana", "Solana"))
+        coinIds.add(internalCoinData("dogecoin", "Dogecoin"))
+        coinIds.add(internalCoinData("polkadot", "Polkadot"))
+        coinIds.add(internalCoinData("wrapped-bitcoin", "Wrapped Bitcoin"))
+        coinIds.add(internalCoinData("tron", "TRON"))
+        coinIds.add(internalCoinData("avalanche-2", "Avax"))
+        coinIds.add(internalCoinData("dai","dai"))
+        coinIds.add(internalCoinData("shiba-inu", "Shiba Inu"))
+        coinIds.add(internalCoinData("matic-network", "Polygon"))
+        coinIds.add(internalCoinData("ftx-token", "FTX Token"))
+        coinIds.add(internalCoinData("near", "NEAR Protocol"))
+        coinIds.add(internalCoinData("uniswap", "Uniswap"))
+        coinIds.add(internalCoinData("bitcoin-cash", "Bitcoin Cash"))
+        coinIds.add(internalCoinData("link", "Link"))
     }
 
     private fun getAllCoinData(){
@@ -66,15 +73,25 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getCoinData(id: String){
+    private fun getCoinData(q: internalCoinData){
+        val id = q.id
+        val name = q.name
         coinGeckoAPI.getCoinData(id)
             .enqueue(object : Callback<CoinData>{
                 override fun onResponse(call: Call<CoinData>, response: Response<CoinData>){
                     Log.i(MYNAME, "getCoinData $id")
                     val coinData = response.body() ?: return
-                    val imgUri = "@drawable/$id.png"
-                    val imgRes = resources.getIdentifier(imgUri, null, packageName)
-                    coinListView.add(ItemsViewModel(imgRes, id, "$" + coinData.market_data.current_price.USD.toString()))
+                    val imgName = id.replace("-","_")
+                    val imgUri = "@drawable/$imgName"
+                    Log.i(MYNAME, imgUri)
+//                    resources.getIdentifier()
+                    var imgRes = resources.getIdentifier(imgUri, "drawable", packageName)
+                    Log.i(MYNAME, coinData.market_data.current_price.USD)
+                    Log.i(MYNAME, coinListView.size.toString())
+
+                    coinListView.add(ItemsViewModel(imgRes, name, "$" + coinData.market_data.current_price.USD))
+                    Log.i(MYNAME, "Added to coinListView $id")
+                    recyclerview.adapter?.notifyDataSetChanged()
                 }
                 override fun onFailure(call: Call<CoinData>, t: Throwable){
                     Log.e(MYNAME, "getCoinData onFailure() $id")
