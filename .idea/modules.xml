@@ -7,6 +7,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/CoinVIew.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/CoinVIew.app.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/CoinVIew.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/CoinVIew.app.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/CoinVIew.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/CoinVIew.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.CoinVIew.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.CoinVIew.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.CoinVIew.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.CoinVIew.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.CoinVIew.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.CoinVIew.app.unitTest.iml" />
     </modules>
   </component>
 </project>

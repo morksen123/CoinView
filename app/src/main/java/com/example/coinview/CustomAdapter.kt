@@ -1,6 +1,5 @@
 package com.example.coinview
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,12 +22,13 @@ class CustomAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adap
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val itemsViewModel = mList[position]
-        Log.i("onBindViewHolder",itemsViewModel.image.toString())
         // sets the image to the imageview from our itemHolder class
+//        holder.imageView.setImageURI(itemsViewModel.imageUrl)
+//        holder.imageView.setImageBitmap(itemsViewModel.image)//setImageResource(itemsViewModel.image)
         holder.imageView.setImageResource(itemsViewModel.image)
-
         // sets the text to the textview from our itemHolder class
-        holder.textView.text = itemsViewModel.text
+        holder.nameView.text = itemsViewModel.name
+        holder.priceView.text = itemsViewModel.price
 
     }
 
@@ -40,6 +40,7 @@ class CustomAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adap
     // Holds the views for adding it to image and text
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
         val imageView: ImageView = itemView.findViewById(R.id.imageView)
-        val textView: TextView = itemView.findViewById(R.id.textView2)
+        val nameView: TextView = itemView.findViewById(R.id.name)
+        val priceView: TextView = itemView.findViewById(R.id.price)
     }
 }
