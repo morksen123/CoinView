@@ -3,6 +3,7 @@ package com.example.coinview
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coinview.network.CoinGeckoAPI
@@ -13,6 +14,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
     private val MYNAME = "MainActivity"
@@ -27,9 +29,19 @@ class MainActivity : AppCompatActivity() {
         recyclerview.layoutManager = LinearLayoutManager(this)
         val data = ArrayList<ItemsViewModel>()
 
-        for (i in 1..20){
-            data.add(ItemsViewModel(R.drawable.ic_launcher_foreground, "Item " + i))
-        }
+        val coinArray = ArrayList<ItemsViewModel>()
+
+        // bitcoin, eth, dopecoin, bitcoin2x, blocknet, candy, chess, coupe, dascoin, educare
+        data.add(ItemsViewModel(R.drawable.bitcoin2x, text = "Bitcoin2x"))
+        data.add(ItemsViewModel(R.drawable.blocknet, text = "blocknet"))
+        data.add(ItemsViewModel(R.drawable.candy, text = "candy"))
+        data.add(ItemsViewModel(R.drawable.chesscoin, text = "chesscoin"))
+        data.add(ItemsViewModel(R.drawable.coupecoin, text = "coupecoin"))
+        data.add(ItemsViewModel(R.drawable.dascoin, text = "dascoin"))
+        data.add(ItemsViewModel(R.drawable.dopecoin, text = "dopecoin"))
+        data.add(ItemsViewModel(R.drawable.educare, text = "educre"))
+        data.add(ItemsViewModel(R.drawable.aelf, text = "aelf"))
+        data.add(ItemsViewModel(R.drawable.adbank, text = "adbank"))
 
         val adapter = CustomAdapter(data)
 
