@@ -39,9 +39,14 @@ class MainActivity : AppCompatActivity() {
         data.add(ItemsViewModel(R.drawable.coupecoin, text = "coupecoin"))
         data.add(ItemsViewModel(R.drawable.dascoin, text = "dascoin"))
         data.add(ItemsViewModel(R.drawable.dopecoin, text = "dopecoin"))
-        data.add(ItemsViewModel(R.drawable.educare, text = "educre"))
+        data.add(ItemsViewModel(R.drawable.educare, text = "educare"))
         data.add(ItemsViewModel(R.drawable.aelf, text = "aelf"))
         data.add(ItemsViewModel(R.drawable.adbank, text = "adbank"))
+        data.add(ItemsViewModel(R.drawable.acchain, text = "acchain"))
+        data.add(ItemsViewModel(R.drawable.ace, text = "ace"))
+        data.add(ItemsViewModel(R.drawable.apis, text = "apis"))
+        data.add(ItemsViewModel(R.drawable.aidoc, text = "aidoc"))
+        data.add(ItemsViewModel(R.drawable.ardor, text = "ardor"))
 
         val adapter = CustomAdapter(data)
 
